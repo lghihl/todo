@@ -1,11 +1,11 @@
 import React from 'react';
 import './TodoList.css';
 
-const TodoList = ({form, children}) => {
+const TodoList = ({head, form, children}) => {
     return (
         <main className="todo-list">
-            <div className="title">
-                TodoList
+            <div className="form-wrapper">
+                {head}
             </div>
             <div className="form-wrapper">
                 {form}

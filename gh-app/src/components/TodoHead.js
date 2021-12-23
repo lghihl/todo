@@ -1,17 +1,15 @@
 import React from 'react';
+import './TodoList.css';
 
-class TodoHead extends Component {
-    render() {
-        const { todos, onToggle, onRemove } = this.props;
-
-        return (
-            <div>
-                <TodoItem text="빨래하기"/>
-                <TodoItem text="청소하기"/>
-                <TodoItem text="설거지하기"/>
+const TodoHead = ({checked_count, all_count}) => {
+    return (
+        <main>
+            <div className="title">TodoList</div>
+            <div className="progress">
+                진행률 : {checked_count} / {all_count}
             </div>
-        );
-    }
-}
+        </main>
+    );
+};
 
 export default TodoHead;

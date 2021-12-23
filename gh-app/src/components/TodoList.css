@@ -13,6 +13,10 @@
     background: #ecceff;;
     color: black;
 }
+
+.progress {
+    text-align: center;
+}
   
 .form-wrapper {
     padding: 1rem;
