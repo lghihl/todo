@@ -3,15 +3,6 @@ import TodoItem from './TodoItem'
 import Progress from './Progress'
 
 export default function TodoList( {todos, handleCreate, handleToggle, handleRemove} ) {
-    const toggle = (e, id) => {
-        handleToggle(todos.map(todo => {
-            if(todo.id === id) {
-                todo.completed = !todo.completed
-            }
-            return todo;
-        }))
-    }
-
     return (
         <div className="List">
             <Progress completedCount={todos.filter(todo => todo.completed).length} allCount={todos.length} />
@@ -20,7 +11,7 @@ export default function TodoList( {todos, handleCreate, handleToggle, handleRemo
                 {todos.map( todo => 
                     <TodoItem
                         todo={todo} 
-                        handleToggle={toggle}
+                        handleToggle={handleToggle}
                         handleRemove={handleRemove}
                         key={todo.id}
                     />

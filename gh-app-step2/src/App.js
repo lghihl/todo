@@ -1,6 +1,6 @@
 import './App.css';
 import TodoList from './TodoList';
-import { userState, useState } from 'react';
+import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 const initialTodos = [
@@ -22,7 +22,7 @@ const initialTodos = [
 ]
 
 function App() {
-  const [ todos, setTodo ] = useState(initialTodos);
+  const [ todos, setState ] = useState(initialTodos);
 
   const handleCreate = (newTodo) => {
     const todo = {
@@ -30,11 +30,20 @@ function App() {
       todo: newTodo,
       completed: false,
     };
-    setTodo( (prevState) => [...prevState, todo] );
+    setState( (prevState) => [...prevState, todo] );
   }
 
   const handleRemove = (id) => {
-    setTodo( (prevState) => prevState.filter(todo => todo.id !== id) );
+    setState( (prevState) => prevState.filter(todo => todo.id !== id) );
+  }
+
+  const handleToggle = (id) => {
+    setState(todos.map(todo => {
+        if(todo.id === id) {
+            todo.completed = !todo.completed
+        }
+        return todo;
+    }))
   }
 
   return (
@@ -43,7 +52,7 @@ function App() {
       <TodoList
         todos={todos}
         handleCreate={handleCreate}
-        handleToggle={setTodo}
+        handleToggle={handleToggle}
         handleRemove={handleRemove}
       />
     </div>
